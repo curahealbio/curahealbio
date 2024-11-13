@@ -10,3 +10,4 @@
 curahealbio/curahealbio is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 You can click the Preview link to take a look at your changes.
 --->
+Thrilled to announce that I’m running @CuraHealBio! We're making strides in healthcare innovation with our portable glucose tester, Zero Zero Check. Join us as we redefine health management. #HealthTech #Startup #DiabetesCare curahealbio.com
