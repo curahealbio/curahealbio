@@ -1,567 +1,620 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CuraHealBio – Zero Zero Check | 휴대용 혈당 측정기</title>
-  <meta name="description" content="Zero Zero Check – 언제 어디서나 정확하게. CuraHealBio의 혁신적인 휴대용 혈당 측정기. Portable glucose tester redefining diabetes care." />
-  <meta property="og:title" content="Zero Zero Check – CuraHealBio" />
-  <meta property="og:description" content="언제 어디서나, 혈당을 내 손안에. The next-gen portable glucose tester." />
-  <meta property="og:url" content="https://curahealbio.com" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --primary: #00C896;
-      --primary-dark: #00A87C;
-      --accent: #0057FF;
-      --dark: #0A0F1E;
-      --gray-900: #111827;
-      --gray-700: #374151;
-      --gray-500: #6B7280;
-      --gray-200: #E5E7EB;
-      --gray-100: #F9FAFB;
-      --white: #FFFFFF;
-      --radius: 16px;
-      --shadow: 0 20px 60px rgba(0,0,0,0.12);
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Noto Sans KR', 'Inter', sans-serif;
-      color: var(--gray-900);
-      background: var(--white);
-      overflow-x: hidden;
-    }
-    .en { display: none; }
-    body.lang-en .ko { display: none; }
-    body.lang-en .en { display: inline; }
-    body.lang-en .en-block { display: block; }
-    body.lang-en .ko-block { display: none; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>제로제로체크 | 음료 속 당, 마시기 전에 확인하세요 – 큐라힐바이오</title>
+<meta name="description" content="제로제로체크는 음료에 적시면 5~10초 안에 색 변화로 당 함유 여부를 알려주는 휴대용 당 검사지입니다. 1통 100회분. 2024 대한민국발명특허대전 특허청장상 수상." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="제로제로체크 – 이 음료, 정말 제로슈가 맞을까?" />
+<meta property="og:description" content="음료에 적시고 5~10초. 색이 그대로면 제로, 변하면 당이 들어 있어요. 휴대용 당 검사지 제로제로체크." />
+<meta property="og:image" content="https://curahealbio.github.io/curahealbio/assets/hero.jpg" />
+<meta property="og:url" content="https://curahealbio.github.io/curahealbio/" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="theme-color" content="#F96A28" />
+<link rel="icon" href="assets/favicon.png" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+<style>
+  :root {
+    --orange: #F96A28;
+    --orange-dark: #E0551A;
+    --orange-soft: #FFF1EA;
+    --ink: #1A1A1A;
+    --ink-2: #4A4A4A;
+    --ink-3: #7A7A7A;
+    --line: #E6E6E6;
+    --bg-soft: #F4F4F4;
+    --white: #FFFFFF;
+    --zero: #5BC6E3;
+    --sugar: #9C8A3A;
+    --radius: 20px;
+    --maxw: 1160px;
+    color-scheme: light;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    color: var(--ink); background: var(--white);
+    line-height: 1.6; word-break: keep-all; overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; }
+  html:not([lang="en"]) .en { display: none !important; }
+  html[lang="en"] .ko { display: none !important; }
 
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 16px 40px;
-      display: flex; align-items: center; justify-content: space-between;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(0,0,0,0.06);
-    }
-    .nav-logo {
-      font-weight: 800; font-size: 20px; color: var(--dark);
-      text-decoration: none; letter-spacing: -0.5px;
-    }
-    .nav-logo span { color: var(--primary); }
-    .nav-links { display: flex; align-items: center; gap: 32px; }
-    .nav-links a {
-      text-decoration: none; font-size: 15px; font-weight: 500;
-      color: var(--gray-700); transition: color .2s;
-    }
-    .nav-links a:hover { color: var(--primary); }
-    .lang-toggle {
-      background: var(--gray-100); border: 1.5px solid var(--gray-200);
-      border-radius: 20px; padding: 6px 14px;
-      font-size: 13px; font-weight: 600; cursor: pointer;
-      display: flex; gap: 6px; align-items: center;
-    }
-    .lang-toggle:hover { border-color: var(--primary); }
-    .btn-nav {
-      background: var(--primary); color: white;
-      border: none; border-radius: 10px;
-      padding: 10px 22px; font-size: 14px; font-weight: 700;
-      cursor: pointer; transition: background .2s;
-      text-decoration: none;
-    }
-    .btn-nav:hover { background: var(--primary-dark); }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+  section { padding: 110px 0; }
+  .eyebrow {
+    display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .08em;
+    color: var(--orange); text-transform: uppercase; margin-bottom: 14px;
+  }
+  h2 { font-size: clamp(28px, 4.2vw, 44px); line-height: 1.25; letter-spacing: -0.03em; font-weight: 800; }
+  h2 em, h1 em { font-style: normal; color: var(--orange); }
+  .lead { font-size: clamp(16px, 1.8vw, 19px); color: var(--ink-2); margin-top: 18px; max-width: 620px; }
 
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      background: linear-gradient(135deg, #001a0f 0%, #003320 40%, #001a3a 100%);
-      display: flex; align-items: center; justify-content: center;
-      text-align: center;
-      padding: 120px 24px 80px;
-      position: relative; overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(0,200,150,0.15) 0%, transparent 70%);
-    }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(0,200,150,0.15); border: 1px solid rgba(0,200,150,0.4);
-      color: var(--primary); border-radius: 100px;
-      padding: 8px 18px; font-size: 13px; font-weight: 600;
-      margin-bottom: 28px; letter-spacing: 0.5px;
-    }
-    .hero-badge::before { content: '●'; font-size: 8px; }
-    .hero h1 {
-      font-size: clamp(42px, 8vw, 80px);
-      font-weight: 800; color: white; line-height: 1.1;
-      letter-spacing: -2px; margin-bottom: 20px;
-    }
-    .hero h1 span { color: var(--primary); }
-    .hero-sub {
-      font-size: clamp(16px, 2.5vw, 20px);
-      color: rgba(255,255,255,0.65); max-width: 560px;
-      margin: 0 auto 40px; line-height: 1.7; font-weight: 400;
-    }
-    .hero-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .btn-primary {
-      background: var(--primary); color: white;
-      padding: 16px 36px; border-radius: 12px;
-      font-size: 16px; font-weight: 700;
-      text-decoration: none; transition: all .2s;
-      display: inline-flex; align-items: center; gap: 8px;
-    }
-    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
-    .btn-outline {
-      background: transparent; color: white;
-      border: 2px solid rgba(255,255,255,0.3);
-      padding: 16px 36px; border-radius: 12px;
-      font-size: 16px; font-weight: 600;
-      text-decoration: none; transition: all .2s;
-    }
-    .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.08); }
-    .hero-stats {
-      display: flex; gap: 48px; justify-content: center; flex-wrap: wrap;
-      margin-top: 80px; padding-top: 48px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      position: relative; z-index: 1;
-    }
-    .stat { text-align: center; }
-    .stat-num { font-size: 36px; font-weight: 800; color: var(--primary); line-height: 1; }
-    .stat-label { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 6px; font-weight: 400; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 16px 30px; border-radius: 999px; font-size: 16px; font-weight: 700;
+    text-decoration: none; transition: transform .15s, background .15s, box-shadow .15s; white-space: nowrap;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-orange { background: var(--orange); color: #fff; box-shadow: 0 8px 24px rgba(249,106,40,.3); }
+  .btn-orange:hover { background: var(--orange-dark); }
+  .btn-white { background: #fff; color: var(--orange-dark); box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+  .btn-ghost-white { border: 2px solid rgba(255,255,255,.75); color: #fff; }
+  .btn-ghost-white:hover { background: rgba(255,255,255,.12); }
+  .btn-ghost { border: 2px solid var(--line); color: var(--ink); background: #fff; }
+  .btn-ghost:hover { border-color: var(--orange); color: var(--orange); }
 
-    /* SECTION BASE */
-    section { padding: 100px 24px; }
-    .container { max-width: 1100px; margin: 0 auto; }
-    .section-tag {
-      display: inline-block;
-      background: rgba(0,200,150,0.1); color: var(--primary);
-      border-radius: 100px; padding: 6px 16px;
-      font-size: 12px; font-weight: 700; letter-spacing: 1px;
-      text-transform: uppercase; margin-bottom: 16px;
-    }
-    .section-title {
-      font-size: clamp(28px, 4vw, 44px);
-      font-weight: 800; letter-spacing: -1px; line-height: 1.2;
-      margin-bottom: 16px;
-    }
-    .section-sub {
-      font-size: 17px; color: var(--gray-500);
-      max-width: 520px; line-height: 1.7;
-    }
+  /* NAV */
+  .nav {
+    position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.94);
+    backdrop-filter: saturate(180%) blur(14px); -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid rgba(0,0,0,.06);
+  }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .brand img { width: 38px; height: 38px; }
+  .brand b { font-size: 17px; letter-spacing: -0.02em; white-space: nowrap; }
+  .brand small { display: block; font-size: 11px; color: var(--ink-3); font-weight: 500; line-height: 1.2; }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-links a { font-size: 15px; font-weight: 600; color: var(--ink-2); text-decoration: none; }
+  .nav-links a:hover { color: var(--orange); }
+  .nav-actions { display: flex; align-items: center; gap: 10px; }
+  .lang-btn {
+    border: 1.5px solid var(--line); background: #fff; border-radius: 999px;
+    padding: 7px 14px; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; color: var(--ink-2);
+  }
+  .lang-btn:hover { border-color: var(--orange); color: var(--orange); }
+  .nav .btn { padding: 10px 20px; font-size: 14px; box-shadow: none; }
 
-    /* PROBLEM */
-    .problem { background: var(--gray-100); }
-    .problem-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px; margin-top: 56px;
-    }
-    .problem-card {
-      background: white; border-radius: var(--radius);
-      padding: 32px; border: 1px solid var(--gray-200);
-    }
-    .problem-icon { font-size: 32px; margin-bottom: 16px; }
-    .problem-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
-    .problem-card p { font-size: 14px; color: var(--gray-500); line-height: 1.7; }
+  /* HERO */
+  .hero {
+    position: relative; color: #fff; padding: 0; overflow: hidden;
+    background: linear-gradient(180deg, #E45A1B 0%, #F17126 50%, #F2782D 100%);
+  }
+  .hero .wrap {
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 24px;
+    padding-top: 64px; padding-bottom: 64px; min-height: min(86vh, 720px);
+  }
+  .hero-text { max-width: 560px; position: relative; z-index: 1; }
+  .hero-img {
+    width: 100%; max-width: 560px; justify-self: end;
+    -webkit-mask-image: radial-gradient(closest-side, #000 78%, transparent 100%);
+            mask-image: radial-gradient(closest-side, #000 78%, transparent 100%);
+  }
+  .award-pill {
+    display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.18);
+    border: 1px solid rgba(255,255,255,.45); border-radius: 999px; padding: 8px 16px;
+    font-size: 13px; font-weight: 700; margin-bottom: 26px;
+  }
+  .award-pill::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #fff; }
+  .hero h1 { font-size: clamp(38px, 6vw, 68px); line-height: 1.15; letter-spacing: -0.04em; font-weight: 800; }
+  .hero h1 em { color: #fff; background: linear-gradient(transparent 62%, rgba(255,255,255,.35) 62%); }
+  .hero p.sub { font-size: clamp(17px, 2vw, 21px); margin-top: 22px; opacity: .95; }
+  .hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+  .hero .chips { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 34px; font-size: 14px; font-weight: 600; opacity: .92; }
+  .hero .chips span::before { content: "✓ "; }
 
-    /* PRODUCT */
-    .product-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 64px; align-items: center; margin-top: 64px;
-    }
-    .product-visual {
-      background: linear-gradient(135deg, #001a0f, #003320);
-      border-radius: 24px; aspect-ratio: 1;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 120px; position: relative; overflow: hidden;
-    }
-    .product-visual::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(circle at 60% 40%, rgba(0,200,150,0.3), transparent 60%);
-    }
-    .features-list { list-style: none; margin-top: 32px; display: flex; flex-direction: column; gap: 20px; }
-    .features-list li {
-      display: flex; gap: 16px; align-items: flex-start;
-    }
-    .feat-icon {
-      width: 40px; height: 40px; border-radius: 10px;
-      background: rgba(0,200,150,0.1);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 18px; flex-shrink: 0;
-    }
-    .feat-text h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
-    .feat-text p { font-size: 13px; color: var(--gray-500); line-height: 1.6; }
+  /* PROBLEM */
+  .problem { background: #111; color: #fff; padding: 0; overflow: hidden; }
+  .problem .grid { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
+  .problem .copy { padding: 110px 48px 110px max(24px, calc((100vw - var(--maxw)) / 2 + 24px)); }
+  .problem .lead { color: rgba(255,255,255,.78); }
+  .problem .lead b { color: #fff; }
+  .problem ul { list-style: none; margin-top: 36px; display: grid; gap: 12px; }
+  .problem li {
+    display: flex; gap: 14px; align-items: flex-start; padding: 16px 18px;
+    background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: 14px;
+  }
+  .problem li b { color: var(--orange); font-size: 15px; min-width: 22px; }
+  .problem li span { font-size: 15px; color: rgba(255,255,255,.88); }
+  .problem .photo { position: relative; min-height: 420px; }
+  .problem .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 70% center; }
 
-    /* HOW */
-    .how { background: var(--gray-100); }
-    .steps {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 24px; margin-top: 56px;
-    }
-    .step {
-      background: white; border-radius: var(--radius);
-      padding: 36px 28px; text-align: center;
-      border: 1px solid var(--gray-200);
-      position: relative;
-    }
-    .step-num {
-      width: 44px; height: 44px; border-radius: 12px;
-      background: var(--primary); color: white;
-      font-size: 18px; font-weight: 800;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 20px;
-    }
-    .step h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
-    .step p { font-size: 13px; color: var(--gray-500); line-height: 1.6; }
+  /* OLD vs NEW */
+  .ways { background: var(--bg-soft); }
+  .ways-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 52px; }
+  .way { border-radius: 24px; padding: 36px 32px 32px; background: #fff; text-align: center; }
+  .way.new { background: var(--orange); color: #fff; }
+  .way .tag {
+    display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .05em; padding: 6px 16px;
+    border-radius: 999px; background: var(--bg-soft); color: var(--ink-3);
+  }
+  .way.new .tag { background: rgba(255,255,255,.22); color: #fff; }
+  .way h3 { font-size: 28px; margin-top: 14px; letter-spacing: -0.03em; }
+  .way p { margin-top: 10px; font-size: 16px; }
+  .way:not(.new) h3, .way:not(.new) p { color: var(--ink-3); }
+  .way img { margin-top: 26px; border-radius: 18px; width: 100%; aspect-ratio: 900 / 436; object-fit: cover; }
 
-    /* WHO */
-    .who-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px; margin-top: 56px;
-    }
-    .who-card {
-      border-radius: var(--radius); padding: 32px;
-      border: 2px solid var(--gray-200); transition: border-color .2s;
-    }
-    .who-card:hover { border-color: var(--primary); }
-    .who-card .icon { font-size: 40px; margin-bottom: 16px; }
-    .who-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
-    .who-card p { font-size: 13px; color: var(--gray-500); line-height: 1.6; }
+  /* SOLUTION */
+  .solution .grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
+  .solution .kicker { font-size: clamp(18px, 2.2vw, 24px); font-weight: 700; }
+  .solution .kicker em { font-style: normal; color: var(--orange); font-size: 1.5em; }
+  .solution h2 { font-size: clamp(40px, 6vw, 64px); margin-top: 6px; }
+  .features { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 36px; }
+  .feature { background: var(--bg-soft); border-radius: 18px; padding: 22px 22px 20px; }
+  .feature .num { font-size: 26px; font-weight: 800; color: var(--orange); letter-spacing: -0.03em; }
+  .feature h3 { font-size: 16px; margin-top: 6px; }
+  .feature p { font-size: 14px; color: var(--ink-2); margin-top: 4px; }
+  .bottle-card {
+    display: block; background: linear-gradient(180deg, #F7F7F7, #EFEFEF); border-radius: 28px;
+    padding: 24px; text-decoration: none; position: relative; transition: transform .2s;
+  }
+  .bottle-card:hover { transform: translateY(-4px); }
+  .bottle-card .more {
+    position: absolute; right: 22px; bottom: 22px; background: #fff; color: var(--orange-dark);
+    padding: 10px 16px; border-radius: 999px; font-size: 13px; font-weight: 700; box-shadow: 0 6px 18px rgba(0,0,0,.08);
+  }
 
-    /* CTA */
-    .cta-section {
-      background: linear-gradient(135deg, #001a0f 0%, #002a3a 100%);
-      text-align: center; padding: 100px 24px;
-    }
-    .cta-section h2 {
-      font-size: clamp(28px, 4vw, 48px);
-      font-weight: 800; color: white; letter-spacing: -1px;
-      margin-bottom: 16px;
-    }
-    .cta-section p { font-size: 17px; color: rgba(255,255,255,0.6); margin-bottom: 40px; }
-    .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .btn-white {
-      background: white; color: var(--dark);
-      padding: 16px 36px; border-radius: 12px;
-      font-size: 16px; font-weight: 700;
-      text-decoration: none; transition: all .2s;
-    }
-    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
-    .btn-outline-white {
-      background: transparent; color: white;
-      border: 2px solid rgba(255,255,255,0.3);
-      padding: 16px 36px; border-radius: 12px;
-      font-size: 16px; font-weight: 600;
-      text-decoration: none; transition: all .2s;
-    }
-    .btn-outline-white:hover { border-color: white; }
+  /* HOW */
+  .how { background: var(--orange-soft); }
+  .how-head { text-align: center; }
+  .how-head .lead { margin-left: auto; margin-right: auto; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 52px; }
+  .step { background: #fff; border-radius: 22px; overflow: hidden; }
+  .step img { width: 100%; aspect-ratio: 616 / 866; object-fit: cover; }
+  .step .body { padding: 22px 22px 26px; }
+  .step .n {
+    display: inline-flex; width: 32px; height: 32px; border-radius: 50%; background: var(--orange); color: #fff;
+    align-items: center; justify-content: center; font-weight: 800; font-size: 15px;
+  }
+  .step h3 { font-size: 19px; margin-top: 12px; letter-spacing: -0.02em; }
+  .step p { font-size: 15px; color: var(--ink-2); margin-top: 6px; }
+  .result-legend { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 26px; }
+  .legend { display: flex; align-items: center; gap: 16px; background: #fff; border-radius: 18px; padding: 20px 22px; }
+  .strip { width: 18px; height: 64px; border-radius: 4px; background: #1D2433; position: relative; flex-shrink: 0; }
+  .strip::before { content: ""; position: absolute; left: 1px; right: 1px; top: 2px; height: 16px; border-radius: 2px; background: var(--zero); }
+  .strip.sugar::before { background: var(--sugar); }
+  .legend b { font-size: 17px; }
+  .legend span { display: block; font-size: 14px; color: var(--ink-2); }
+  .how .video-link { text-align: center; margin-top: 34px; }
 
-    /* FOOTER */
-    footer {
-      background: var(--dark); color: rgba(255,255,255,0.5);
-      padding: 48px 40px;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 24px;
-    }
-    .footer-logo { font-size: 18px; font-weight: 800; color: white; }
-    .footer-logo span { color: var(--primary); }
-    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
-    .footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 13px; }
-    .footer-links a:hover { color: var(--primary); }
-    .footer-copy { font-size: 12px; }
+  /* LIFESTYLE */
+  .lifestyle {
+    position: relative; padding: 0; min-height: 560px; display: flex; align-items: center;
+    background: #F5F2EE url("assets/bag.jpg") right center / cover no-repeat;
+  }
+  .lifestyle::before {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(250,248,245,.97) 0%, rgba(250,248,245,.9) 38%, rgba(250,248,245,0) 62%);
+  }
+  .lifestyle .wrap { position: relative; width: 100%; padding-top: 100px; padding-bottom: 100px; }
+  .lifestyle .copy { max-width: 520px; }
+  .lifestyle .lead b { color: var(--orange); }
+  .places { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+  .places span { background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; font-size: 14px; font-weight: 600; }
+  .lifestyle-mobile-img { display: none; }
 
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      nav { padding: 14px 20px; }
-      .nav-links { display: none; }
-      .product-grid { grid-template-columns: 1fr; gap: 32px; }
-      .hero-stats { gap: 28px; }
-      footer { flex-direction: column; text-align: center; padding: 40px 24px; }
+  /* WHO */
+  .who-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 48px; }
+  .who { border: 1.5px solid var(--line); border-radius: 20px; padding: 28px 24px; transition: border-color .2s; }
+  .who:hover { border-color: var(--orange); }
+  .who .ico {
+    width: 48px; height: 48px; border-radius: 14px; background: var(--orange-soft); color: var(--orange);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .who h3 { font-size: 18px; margin-top: 18px; letter-spacing: -0.02em; }
+  .who p { font-size: 14px; color: var(--ink-2); margin-top: 6px; }
+
+  /* TRUST */
+  .trust { background: var(--bg-soft); }
+  .trust .grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: 56px; align-items: center; }
+  .trust figure img { border-radius: 24px; width: 100%; }
+  .trust figcaption { font-size: 13px; color: var(--ink-3); margin-top: 10px; }
+  .proof { list-style: none; margin-top: 32px; display: grid; gap: 12px; }
+  .proof li { background: #fff; border-radius: 16px; padding: 18px 20px; display: flex; gap: 14px; align-items: flex-start; }
+  .proof li::before {
+    content: ""; flex-shrink: 0; width: 22px; height: 22px; margin-top: 2px; border-radius: 50%;
+    background: var(--orange) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center / 14px no-repeat;
+  }
+  .proof b { display: block; font-size: 16px; }
+  .proof span { font-size: 14px; color: var(--ink-2); }
+
+  /* GIVING */
+  .giving .grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; }
+  .giving img { border-radius: 24px; width: 100%; }
+
+  /* PARTNER */
+  .partner { background: var(--orange); color: #fff; text-align: center; }
+  .partner h2 em { color: #fff; }
+  .partner .lead { color: rgba(255,255,255,.92); margin-left: auto; margin-right: auto; }
+  .partner-types { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 44px auto 0; max-width: 960px; }
+  .partner-types div { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.28); border-radius: 18px; padding: 22px 16px; }
+  .partner-types b { display: block; font-size: 16px; }
+  .partner-types span { font-size: 14px; opacity: .9; }
+  .partner .ctas { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 40px; }
+
+  /* FOOTER */
+  footer { background: #151515; color: rgba(255,255,255,.62); padding: 56px 0 40px; font-size: 14px; }
+  footer .top { display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+  footer .co { display: flex; gap: 14px; align-items: center; }
+  footer .co img { width: 48px; height: 48px; }
+  footer .co b { color: #fff; font-size: 16px; display: block; }
+  footer nav { display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: center; }
+  footer nav a { text-decoration: none; color: rgba(255,255,255,.75); }
+  footer nav a:hover { color: var(--orange); }
+  footer .note { margin-top: 36px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.1); font-size: 13px; line-height: 1.7; }
+
+  /* MOBILE BUY BAR */
+  .buy-bar { display: none; }
+
+  @media (max-width: 960px) {
+    .nav-links { display: none; }
+    .problem .grid, .solution .grid, .trust .grid, .giving .grid { grid-template-columns: 1fr; gap: 40px; }
+    .problem .copy { padding: 80px 24px 48px; }
+    .problem .photo { min-height: 360px; }
+    .who-grid, .partner-types { grid-template-columns: 1fr 1fr; }
+    .giving .grid > div:first-child { order: 2; }
+  }
+  @media (max-width: 720px) {
+    section { padding: 80px 0; }
+    .brand small { display: none; }
+    .brand b { font-size: 15px; }
+    .brand img { width: 32px; height: 32px; }
+    .nav .wrap { gap: 8px; padding: 0 16px; }
+    .nav .btn { padding: 9px 14px; }
+    .lang-btn { padding: 7px 10px; }
+    .hero .wrap { grid-template-columns: 1fr; min-height: 0; padding-top: 48px; padding-bottom: 0; }
+    .hero-img { max-width: 420px; justify-self: center; margin-top: -8px; }
+    .hero .ctas .btn { flex: 1 1 100%; }
+    .ways-grid, .steps, .result-legend, .features { grid-template-columns: 1fr; }
+    .steps { gap: 16px; }
+    .step { display: grid; grid-template-columns: 120px 1fr; }
+    .step img { height: 100%; aspect-ratio: auto; }
+    .step .body { padding: 18px; }
+    .lifestyle { display: block; background: #FAF8F5; min-height: 0; }
+    .lifestyle::before { display: none; }
+    .lifestyle .wrap { padding-top: 80px; padding-bottom: 36px; }
+    .lifestyle-mobile-img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 80% center; }
+    .who-grid, .partner-types { grid-template-columns: 1fr; }
+    .partner .ctas .btn { flex: 1 1 100%; }
+    .buy-bar {
+      display: flex; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 60;
+      justify-content: center; padding: 16px; border-radius: 999px; background: var(--orange); color: #fff;
+      font-weight: 800; font-size: 16px; text-decoration: none; box-shadow: 0 10px 30px rgba(249,106,40,.45);
+      transform: translateY(0); transition: transform .25s, opacity .25s;
     }
-  </style>
+    body.at-hero .buy-bar { transform: translateY(140%); opacity: 0; pointer-events: none; }
+    footer { padding-bottom: 100px; }
+  }
+</style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">Cura<span>Heal</span>Bio</a>
-  <div class="nav-links">
-    <a href="#product"><span class="ko">제품</span><span class="en">Product</span></a>
-    <a href="#how"><span class="ko">사용법</span><span class="en">How It Works</span></a>
-    <a href="#who"><span class="ko">대상</span><span class="en">Who It's For</span></a>
-    <a href="#contact"><span class="ko">문의</span><span class="en">Contact</span></a>
-    <button class="lang-toggle" onclick="toggleLang()" id="langBtn">🌐 EN</button>
-    <a href="https://smartstore.naver.com/curahealbio" target="_blank" rel="noopener" class="btn-nav">
-      <span class="ko">구매하기</span><span class="en">Buy Now</span>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="큐라힐바이오 제로제로체크">
+      <img src="assets/logo.png" alt="" width="126" height="127" />
+      <span><b class="ko">제로제로체크</b><b class="en">ZeroZero Check</b><small>CURAHEAL BIO</small></span>
     </a>
+    <nav class="nav-links" aria-label="주요 메뉴">
+      <a href="#how"><span class="ko">사용법</span><span class="en">How it works</span></a>
+      <a href="#who"><span class="ko">추천 대상</span><span class="en">Who it's for</span></a>
+      <a href="#trust"><span class="ko">수상·특허</span><span class="en">Awards</span></a>
+      <a href="#partner"><span class="ko">제휴 문의</span><span class="en">Partners</span></a>
+      <a href="https://curahealbio.com/#zerozero" target="_blank" rel="noopener"><span class="ko">공식 홈페이지</span><span class="en">Official site</span></a>
+    </nav>
+    <div class="nav-actions">
+      <button class="lang-btn" type="button" id="langBtn" aria-label="Switch language">EN</button>
+      <a class="btn btn-orange ko" href="https://smartstore.naver.com/curahealbio" target="_blank" rel="noopener">구매하기</a>
+      <a class="btn btn-orange en" href="mailto:curahealbio@gmail.com?subject=ZeroZero%20Check%20order%20inquiry">Order</a>
+    </div>
   </div>
-  <div style="display:flex;gap:12px;align-items:center;">
-    <button class="lang-toggle" onclick="toggleLang()" id="langBtnMobile">🌐 EN</button>
-    <a href="https://smartstore.naver.com/curahealbio" target="_blank" rel="noopener" class="btn-nav" style="display:block;">
-      <span class="ko">구매</span><span class="en">Buy</span>
-    </a>
-  </div>
-</nav>
+</header>
+
+<main id="top">
 
 <!-- HERO -->
 <section class="hero">
-  <div style="position:relative;z-index:1;">
-    <div class="hero-badge">
-      <span class="ko">헬스테크 혁신 · CuraHealBio</span>
-      <span class="en">HealthTech Innovation · CuraHealBio</span>
-    </div>
-    <h1>
-      <span class="ko">Zero Zero<br /><span>Check</span></span>
-      <span class="en">Zero Zero<br /><span>Check</span></span>
-    </h1>
-    <p class="hero-sub">
-      <span class="ko">언제 어디서나, 혈당을 내 손안에.<br />당신의 건강 관리를 재정의합니다.</span>
-      <span class="en">Anywhere, anytime. Your blood glucose,<br />always in your hands. Redefining health management.</span>
-    </p>
-    <div class="hero-ctas">
-      <a href="https://smartstore.naver.com/curahealbio" target="_blank" rel="noopener" class="btn-primary">
-        <span class="ko">📦 지금 구매하기</span>
-        <span class="en">📦 Buy Now</span>
-      </a>
-      <a href="#product" class="btn-outline">
-        <span class="ko">제품 자세히 보기</span>
-        <span class="en">Learn More</span>
-      </a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-num">5억+</div>
-        <div class="stat-label ko">전세계 당뇨 인구</div>
-        <div class="stat-label en" style="display:none;">Diabetics worldwide</div>
+  <div class="wrap">
+    <div class="hero-text">
+      <div class="award-pill"><span class="ko">2024 대한민국발명특허대전 특허청장상</span><span class="en">2024 Korea Invention Patent Exhibition · KIPO Commissioner's Award</span></div>
+      <h1 class="ko">이 음료,<br />정말 <em>제로슈가</em><br />맞을까?</h1>
+      <h1 class="en">Is your drink<br />really <em>sugar-free?</em></h1>
+      <p class="sub ko">제로제로체크를 음료에 적시고 5~10초.<br />색이 그대로면 제로, 변하면 당이 들어 있어요.</p>
+      <p class="sub en">Dip a ZeroZero Check strip into your drink and wait 5–10 seconds.<br />No color change means zero sugar. A color change means sugar.</p>
+      <div class="ctas">
+        <a class="btn btn-white ko" href="https://smartstore.naver.com/curahealbio" target="_blank" rel="noopener">스마트스토어에서 구매하기</a>
+        <a class="btn btn-white en" href="mailto:curahealbio@gmail.com?subject=ZeroZero%20Check%20order%20inquiry">Order inquiry</a>
+        <a class="btn btn-ghost-white" href="https://curahealbio.com/#zerozero" target="_blank" rel="noopener"><span class="ko">제품 자세히 보기</span><span class="en">Product details</span></a>
       </div>
-      <div class="stat">
-        <div class="stat-num">350만+</div>
-        <div class="stat-label ko">국내 당뇨 환자</div>
-        <div class="stat-label en" style="display:none;">Diabetics in Korea</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">#1</div>
-        <div class="stat-label ko">휴대성 · 정확성</div>
-        <div class="stat-label en" style="display:none;">Portability · Accuracy</div>
-      </div>
+      <div class="chips ko"><span>1통 100회분</span><span>휴대용 스트립</span><span>PCT 국제특허 출원</span></div>
+      <div class="chips en"><span>100 strips per bottle</span><span>Pocket-size</span><span>PCT patent pending</span></div>
     </div>
+    <img class="hero-img" src="assets/hero-product.jpg" alt="제로제로체크 제품 두 통" width="1100" height="1180" fetchpriority="high" />
   </div>
 </section>
 
 <!-- PROBLEM -->
-<section class="problem" id="problem">
-  <div class="container">
-    <div class="section-tag ko">문제 인식</div>
-    <div class="section-tag en" style="display:none;">THE PROBLEM</div>
-    <h2 class="section-title">
-      <span class="ko">혈당 관리, 지금 방식으론<br />불충분합니다</span>
-      <span class="en">Current glucose management<br />isn't good enough</span>
-    </h2>
-    <p class="section-sub">
-      <span class="ko">기존 혈당 측정기의 불편함이 제대로 된 관리를 방해합니다.</span>
-      <span class="en">The inconvenience of traditional glucometers gets in the way of proper care.</span>
-    </p>
-    <div class="problem-grid">
-      <div class="problem-card">
-        <div class="problem-icon">🧳</div>
-        <h3><span class="ko">부피가 크고 불편한 장비</span><span class="en">Bulky & inconvenient</span></h3>
-        <p><span class="ko">외출 시 챙기기 어렵고 측정 과정이 번거로워 측정을 미루게 됩니다.</span><span class="en">Hard to carry out, cumbersome to use — people keep putting it off.</span></p>
+<section class="problem">
+  <div class="grid">
+    <div class="copy">
+      <span class="eyebrow ko">이런 경험 있으셨죠</span><span class="eyebrow en">Sound familiar?</span>
+      <h2 class="ko">제로 음료를 시켰는데,<br />혹시 <em>일반 음료</em>가<br />나온 건 아닐까?</h2>
+      <h2 class="en">You ordered a zero-sugar drink.<br />But are you <em>sure</em><br />that's what you got?</h2>
+      <p class="lead ko">겉보기엔 똑같은 두 잔. 건강을 위한 선택이<br /><b>오히려 걱정이 되는 순간</b>이 있습니다.</p>
+      <p class="lead en">Two drinks that look exactly the same. The healthy choice <b>turns into a worry.</b></p>
+      <ul>
+        <li><b>01</b><span class="ko">키오스크에서 메뉴를 잘못 누르는 주문 실수</span><span class="en">A wrong tap on the kiosk</span></li>
+        <li><b>02</b><span class="ko">바쁜 매장에서 직원이 음료를 바꿔 담는 제조 실수</span><span class="en">A busy barista mixes up the cups</span></li>
+        <li><b>03</b><span class="ko">제로와 일반 제품의 비슷한 포장·색깔로 인한 혼동</span><span class="en">Zero and regular versions that look almost identical</span></li>
+      </ul>
+    </div>
+    <div class="photo"><img src="assets/worry.jpg" alt="음료를 의심스럽게 바라보는 남성" width="1100" height="924" loading="lazy" /></div>
+  </div>
+</section>
+
+<!-- OLD vs NEW -->
+<section class="ways">
+  <div class="wrap">
+    <span class="eyebrow ko">사후관리가 아닌 사전관리</span><span class="eyebrow en">Check first, not after</span>
+    <h2 class="ko">마신 뒤에 걱정하지 말고,<br /><em>마시기 전에</em> 확인하세요</h2>
+    <h2 class="en">Don't worry after you drink.<br /><em>Check before</em> you sip.</h2>
+    <div class="ways-grid">
+      <div class="way">
+        <span class="tag">THE OLD WAY</span>
+        <h3 class="ko">사후 관리</h3><h3 class="en">Afterwards</h3>
+        <p class="ko">마신 뒤에야 걱정합니다.<br />이미 엎질러진 물입니다.</p>
+        <p class="en">You only find out after you drink it.<br />By then it's too late.</p>
+        <img src="assets/old-way.jpg" alt="" width="900" height="436" loading="lazy" />
       </div>
-      <div class="problem-card">
-        <div class="problem-icon">⏱️</div>
-        <h3><span class="ko">느린 측정 속도</span><span class="en">Slow measurement</span></h3>
-        <p><span class="ko">바쁜 일상 속에서 긴 측정 시간은 규칙적인 혈당 체크를 방해합니다.</span><span class="en">A long measurement time makes regular checks impractical in a busy day.</span></p>
-      </div>
-      <div class="problem-card">
-        <div class="problem-icon">📉</div>
-        <h3><span class="ko">데이터 관리의 어려움</span><span class="en">Poor data management</span></h3>
-        <p><span class="ko">측정 결과를 쉽게 기록하고 추적할 수 있는 통합 솔루션이 없습니다.</span><span class="en">No integrated solution for easily recording and tracking measurement results.</span></p>
+      <div class="way new">
+        <span class="tag">THE NEW WAY</span>
+        <h3 class="ko">사전 관리</h3><h3 class="en">Beforehand</h3>
+        <p class="ko">마시기 전,<br /><b>몇 초 만에 확인하고 안심</b>합니다.</p>
+        <p class="en">Before you drink,<br /><b>check in seconds and relax.</b></p>
+        <img src="assets/new-way.jpg" alt="" width="900" height="436" loading="lazy" />
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRODUCT -->
-<section id="product">
-  <div class="container">
-    <div class="section-tag ko">솔루션</div>
-    <div class="section-tag en" style="display:none;">SOLUTION</div>
-    <h2 class="section-title">
-      <span class="ko">Zero Zero Check 소개</span>
-      <span class="en">Introducing Zero Zero Check</span>
-    </h2>
-    <div class="product-grid">
-      <div class="product-visual">💉</div>
-      <div>
-        <p class="section-sub">
-          <span class="ko">CuraHealBio가 만든 혁신적인 휴대용 혈당 측정기.<br />작고 가볍지만, 정확도는 타협하지 않았습니다.</span>
-          <span class="en">CuraHealBio's innovative portable glucose tester.<br />Small and light, but no compromise on accuracy.</span>
-        </p>
-        <ul class="features-list">
-          <li>
-            <div class="feat-icon">⚡</div>
-            <div class="feat-text">
-              <h4><span class="ko">빠른 측정</span><span class="en">Fast Measurement</span></h4>
-              <p><span class="ko">단 몇 초 만에 정확한 혈당 수치를 확인하세요.</span><span class="en">Get accurate results in seconds, wherever you are.</span></p>
-            </div>
-          </li>
-          <li>
-            <div class="feat-icon">🤏</div>
-            <div class="feat-text">
-              <h4><span class="ko">초소형 디자인</span><span class="en">Ultra-compact Design</span></h4>
-              <p><span class="ko">주머니나 지갑에 쏙 들어가는 크기. 외출 시 부담 없이 휴대하세요.</span><span class="en">Fits in your pocket or wallet. Take it anywhere without a second thought.</span></p>
-            </div>
-          </li>
-          <li>
-            <div class="feat-icon">📊</div>
-            <div class="feat-text">
-              <h4><span class="ko">스마트 데이터 관리</span><span class="en">Smart Data Tracking</span></h4>
-              <p><span class="ko">측정 결과를 자동으로 기록하고 패턴을 분석해 건강 관리를 돕습니다.</span><span class="en">Automatically records results and analyzes patterns to support better health decisions.</span></p>
-            </div>
-          </li>
-          <li>
-            <div class="feat-icon">🎯</div>
-            <div class="feat-text">
-              <h4><span class="ko">높은 정확도</span><span class="en">Clinical-grade Accuracy</span></h4>
-              <p><span class="ko">의료 기준에 맞는 정확한 혈당 측정으로 신뢰할 수 있는 데이터를 제공합니다.</span><span class="en">Meets medical standards for reliable, trustworthy readings every time.</span></p>
-            </div>
-          </li>
-        </ul>
+<!-- SOLUTION -->
+<section class="solution" id="product">
+  <div class="wrap grid">
+    <div>
+      <p class="kicker ko">당신의 불안을 확신으로 바꾸는 <em>5초</em></p>
+      <p class="kicker en">Turn doubt into certainty in <em>seconds</em></p>
+      <h2 class="ko">제로제로체크</h2><h2 class="en">ZeroZero Check</h2>
+      <p class="lead ko">음료에 들어 있는 당 성분 유무를 색 변화로 알려주는 휴대용 당 검사지(스트립 타입)입니다. 전문 장비 없이 누구나 쉽게 쓸 수 있어요.</p>
+      <p class="lead en">A pocket-size sugar test strip that shows whether a drink contains sugar through a simple color change. No equipment, no training.</p>
+      <div class="features">
+        <div class="feature"><div class="num">5~10<small class="ko">초</small><small class="en">s</small></div><h3 class="ko">신속성</h3><h3 class="en">Fast</h3><p class="ko">적시고 기다리면 바로 결과 확인</p><p class="en">Dip, wait, read the result</p></div>
+        <div class="feature"><div class="num">100<small class="ko">회분</small><small class="en"> strips</small></div><h3 class="ko">넉넉한 구성</h3><h3 class="en">Value</h3><p class="ko">한 통으로 100번 검사</p><p class="en">100 tests in one bottle</p></div>
+        <div class="feature"><div class="num ko">한 손</div><div class="num en">Pocket</div><h3 class="ko">휴대성</h3><h3 class="en">Portable</h3><p class="ko">가방·주머니에 쏙 들어가는 소형 디자인</p><p class="en">Fits in any bag or pocket</p></div>
+        <div class="feature"><div class="num ko">색 변화</div><div class="num en">Color</div><h3 class="ko">간편성</h3><h3 class="en">Simple</h3><p class="ko">숫자 없이 색만 보면 끝</p><p class="en">No numbers, just look at the color</p></div>
       </div>
     </div>
+    <a class="bottle-card" href="https://curahealbio.com/#zerozero" target="_blank" rel="noopener">
+      <img src="assets/bottle.webp" alt="제로제로체크 제품 통" width="900" height="900" loading="lazy" />
+      <span class="more ko">공식 홈페이지에서 보기 →</span><span class="more en">See on official site →</span>
+    </a>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
+<!-- HOW -->
 <section class="how" id="how">
-  <div class="container">
-    <div style="text-align:center;">
-      <div class="section-tag ko">사용 방법</div>
-      <div class="section-tag en" style="display:none;">HOW IT WORKS</div>
-      <h2 class="section-title">
-        <span class="ko">단 3단계, 누구나 쉽게</span>
-        <span class="en">Just 3 simple steps</span>
-      </h2>
-      <p class="section-sub" style="margin:0 auto;">
-        <span class="ko">복잡한 설정 없이 바로 사용할 수 있습니다.</span>
-        <span class="en">No complex setup. Ready to use right away.</span>
-      </p>
+  <div class="wrap">
+    <div class="how-head">
+      <span class="eyebrow ko">사용 방법</span><span class="eyebrow en">How it works</span>
+      <h2 class="ko">어떤 컵이 <em>제로 콜라</em>일까?</h2>
+      <h2 class="en">Which cup is the <em>zero cola?</em></h2>
+      <p class="lead ko">세 단계면 충분해요.</p>
+      <p class="lead en">Three steps. That's it.</p>
     </div>
     <div class="steps">
       <div class="step">
-        <div class="step-num">1</div>
-        <h3><span class="ko">스트립 삽입</span><span class="en">Insert Strip</span></h3>
-        <p><span class="ko">측정 스트립을 기기에 꽂으면 자동으로 켜집니다.</span><span class="en">Insert the strip — the device powers on automatically.</span></p>
+        <img src="assets/step1.jpg" alt="음료 두 잔과 검사지 두 개" width="616" height="866" loading="lazy" />
+        <div class="body"><span class="n">1</span><h3 class="ko">검사지를 꺼내요</h3><h3 class="en">Take out a strip</h3><p class="ko">통에서 검사지를 한 장 꺼내 준비해요.</p><p class="en">Take one strip from the bottle.</p></div>
       </div>
       <div class="step">
-        <div class="step-num">2</div>
-        <h3><span class="ko">채혈 및 측정</span><span class="en">Apply Blood Sample</span></h3>
-        <p><span class="ko">소량의 혈액을 스트립에 닿으면 즉시 측정이 시작됩니다.</span><span class="en">Touch a small blood drop to the strip — measurement starts instantly.</span></p>
+        <img src="assets/step2.jpg" alt="검사지 끝을 음료에 적시는 모습" width="617" height="867" loading="lazy" />
+        <div class="body"><span class="n">2</span><h3 class="ko">음료에 적셔요</h3><h3 class="en">Dip it in the drink</h3><p class="ko">검사지 끝의 패치 부분을 음료에 적셔요.</p><p class="en">Wet the pad at the tip of the strip with your drink.</p></div>
       </div>
       <div class="step">
-        <div class="step-num">3</div>
-        <h3><span class="ko">결과 확인</span><span class="en">Read Results</span></h3>
-        <p><span class="ko">몇 초 후 선명한 화면에 혈당 수치가 표시됩니다.</span><span class="en">Results appear on the bright display within seconds.</span></p>
+        <img src="assets/step3.jpg" alt="일반 콜라와 제로 콜라에 적신 검사지 색 비교" width="616" height="866" loading="lazy" />
+        <div class="body"><span class="n">3</span><h3 class="ko">5~10초 뒤 색을 봐요</h3><h3 class="en">Check the color in 5–10 s</h3><p class="ko">패치 색이 변했는지만 확인하면 끝이에요.</p><p class="en">Just see whether the pad changed color.</p></div>
       </div>
+    </div>
+    <div class="result-legend">
+      <div class="legend"><div class="strip" aria-hidden="true"></div><div><b class="ko">색 변화 없음 → 제로 음료</b><b class="en">No change → sugar-free</b><span class="ko">하늘색 그대로면 당이 없는 음료예요.</span><span class="en">If the pad stays sky blue, there's no sugar.</span></div></div>
+      <div class="legend"><div class="strip sugar" aria-hidden="true"></div><div><b class="ko">황갈색으로 변함 → 당 함유 음료</b><b class="en">Turns yellow-brown → contains sugar</b><span class="ko">색이 변하면 당이 들어 있는 음료예요.</span><span class="en">A color change means the drink contains sugar.</span></div></div>
+    </div>
+    <div class="video-link">
+      <a class="btn btn-ghost" href="https://www.youtube.com/@curahealbio" target="_blank" rel="noopener"><span class="ko">▶ 유튜브에서 사용 영상 보기</span><span class="en">▶ Watch the demo on YouTube</span></a>
     </div>
   </div>
 </section>
 
-<!-- WHO IT'S FOR -->
+<!-- LIFESTYLE -->
+<section class="lifestyle">
+  <div class="wrap">
+    <div class="copy">
+      <span class="eyebrow ko">어디서나</span><span class="eyebrow en">Anywhere</span>
+      <h2 class="ko">일상에 스며드는 건강관리.<br />더 이상 집에서만<br />하는 관리가 아닙니다.</h2>
+      <h2 class="en">Health habits that go<br />wherever you go.</h2>
+      <p class="lead ko"><b>제로제로체크의 휴대성</b>은 당신이 있는 모든 곳을 건강 관리의 공간으로 만듭니다.</p>
+      <p class="lead en">ZeroZero Check fits in your bag, so every place becomes a place to look after yourself.</p>
+      <div class="places ko"><span>카페</span><span>식당</span><span>영화관</span><span>여행지</span><span>회사</span></div>
+      <div class="places en"><span>Cafés</span><span>Restaurants</span><span>Cinemas</span><span>Travel</span><span>Work</span></div>
+    </div>
+  </div>
+  <img class="lifestyle-mobile-img" src="assets/bag.jpg" alt="가방에 제로제로체크를 넣는 모습" width="1600" height="893" loading="lazy" />
+</section>
+
+<!-- WHO -->
 <section id="who">
-  <div class="container">
-    <div class="section-tag ko">사용 대상</div>
-    <div class="section-tag en" style="display:none;">WHO IT'S FOR</div>
-    <h2 class="section-title">
-      <span class="ko">이런 분들께 꼭 필요합니다</span>
-      <span class="en">Made for everyone who needs it</span>
-    </h2>
+  <div class="wrap">
+    <span class="eyebrow ko">추천 대상</span><span class="eyebrow en">Who it's for</span>
+    <h2 class="ko">이런 분들께 꼭 필요해요</h2>
+    <h2 class="en">Made for people who care what they drink</h2>
     <div class="who-grid">
-      <div class="who-card">
-        <div class="icon">🧑‍⚕️</div>
-        <h3><span class="ko">당뇨 환자</span><span class="en">Diabetics</span></h3>
-        <p><span class="ko">매일 여러 번 혈당을 측정해야 하는 분들을 위한 최고의 파트너.</span><span class="en">The ideal partner for those who measure blood glucose multiple times a day.</span></p>
+      <div class="who">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5s6 6.4 6 11a6 6 0 0 1-12 0c0-4.6 6-11 6-11z"/></svg></div>
+        <h3 class="ko">당뇨가 있는 분과 가족</h3><h3 class="en">People with diabetes and their families</h3>
+        <p class="ko">당이 든 음료를 모르고 마시는 일을 줄이고 싶은 분</p><p class="en">Avoid drinking sugar by mistake</p>
       </div>
-      <div class="who-card">
-        <div class="icon">👨‍👩‍👧</div>
-        <h3><span class="ko">보호자 / 가족</span><span class="en">Caregivers & Family</span></h3>
-        <p><span class="ko">부모님이나 가족의 혈당을 간편하게 모니터링할 수 있습니다.</span><span class="en">Easily monitor the blood glucose of parents or family members.</span></p>
+      <div class="who">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></div>
+        <h3 class="ko">부모님 건강을 챙기는 자녀</h3><h3 class="en">Caring for older parents</h3>
+        <p class="ko">고령층·1인 가구 부모님께 드리는 실용적인 선물</p><p class="en">A practical gift for parents who live alone</p>
       </div>
-      <div class="who-card">
-        <div class="icon">🏃</div>
-        <h3><span class="ko">건강 관리자</span><span class="en">Health-conscious Adults</span></h3>
-        <p><span class="ko">당뇨 전단계이거나 혈당 관리에 관심 있는 모든 분들.</span><span class="en">Anyone with prediabetes or an interest in tracking blood sugar trends.</span></p>
+      <div class="who">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div>
+        <h3 class="ko">다이어트·체중 관리 중인 분</h3><h3 class="en">Watching your weight</h3>
+        <p class="ko">식단 관리 중 제로 음료를 믿고 마시고 싶은 분</p><p class="en">Trust your zero drinks while dieting</p>
       </div>
-      <div class="who-card">
-        <div class="icon">🏥</div>
-        <h3><span class="ko">의료 기관</span><span class="en">Medical Institutions</span></h3>
-        <p><span class="ko">병원, 의원, 약국에서 환자 관리를 위한 B2B 공급도 가능합니다.</span><span class="en">B2B supply available for hospitals, clinics, and pharmacies.</span></p>
+      <div class="who">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h10l-1.5 18h-7z"/><path d="M6.5 8h11"/></svg></div>
+        <h3 class="ko">제로 음료를 즐기는 모든 분</h3><h3 class="en">Anyone who loves zero drinks</h3>
+        <p class="ko">카페·배달 음료가 정말 제로인지 궁금한 분</p><p class="en">Is that café or delivery drink really zero?</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta-section" id="contact">
-  <div class="container">
-    <h2>
-      <span class="ko">지금 바로 시작하세요</span>
-      <span class="en">Start Your Journey Today</span>
-    </h2>
-    <p>
-      <span class="ko">구매 문의, 병원/약국 B2B 공급, 해외 유통 파트너십 모두 환영합니다.</span>
-      <span class="en">Purchase inquiries, B2B supply for hospitals & pharmacies, international distribution — all welcome.</span>
-    </p>
-    <div class="cta-buttons">
-      <a href="https://smartstore.naver.com/curahealbio" target="_blank" rel="noopener" class="btn-white">
-        <span class="ko">🛒 스마트스토어에서 구매</span>
-        <span class="en">🛒 Buy on Naver Store</span>
-      </a>
-      <a href="mailto:curahealbio@gmail.com?subject=Zero Zero Check 문의" class="btn-outline-white">
-        <span class="ko">📧 문의하기</span>
-        <span class="en">📧 Contact Us</span>
-      </a>
-      <a href="mailto:curahealbio@gmail.com?subject=B2B Partnership Inquiry" class="btn-outline-white">
-        <span class="ko">🤝 B2B 파트너십</span>
-        <span class="en">🤝 B2B Partnership</span>
-      </a>
+<!-- TRUST -->
+<section class="trust" id="trust">
+  <div class="wrap grid">
+    <figure>
+      <img src="assets/award.jpg" alt="2024 대한민국발명특허대전 특허청장상 시상식" width="754" height="621" loading="lazy" />
+      <figcaption class="ko">2024 대한민국발명특허대전 시상식</figcaption>
+      <figcaption class="en">2024 Korea Invention Patent Exhibition awards ceremony</figcaption>
+    </figure>
+    <div>
+      <span class="eyebrow ko">검증된 기술</span><span class="eyebrow en">Recognized technology</span>
+      <h2 class="ko">아이디어에서<br /><em>시장 검증</em>까지</h2>
+      <h2 class="en">From idea to<br /><em>proven product</em></h2>
+      <ul class="proof">
+        <li><div><b class="ko">2024 대한민국발명특허대전 특허청장상</b><b class="en">2024 Korea Invention Patent Exhibition – KIPO Commissioner's Award</b></div></li>
+        <li><div><b class="ko">국내 특허 출원 · PCT 국제특허 출원</b><b class="en">Korean patent and PCT international patent applications</b><span>10-2024-0051876 · PCT/KR2024/096284</span></div></li>
+        <li><div><b class="ko">벤처기업 · 연구개발전담부서 인정</b><b class="en">Certified venture company with an in-house R&amp;D department</b><span class="ko">한국산업기술협회 인정 (2024)</span><span class="en">Recognized by KOITA (2024)</span></div></li>
+        <li><div><b class="ko">와디즈 펀딩 성공 · 스마트스토어 · 쿠팡 판매 중</b><b class="en">Successful Wadiz crowdfunding, now sold on Naver and Coupang</b></div></li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- GIVING -->
+<section class="giving">
+  <div class="wrap grid">
+    <div>
+      <span class="eyebrow ko">사회적 가치</span><span class="eyebrow en">Giving back</span>
+      <h2 class="ko">건강 취약계층과<br /><em>함께</em> 합니다</h2>
+      <h2 class="en">Standing with people<br />who need it <em>most</em></h2>
+      <p class="lead ko">대전시 교육청과 연계해 1형 당뇨 학생들과 한국1형당뇨병환우회에 제로제로체크를 기부했습니다. 당뇨 환자, 독거노인, 장애인 등 건강 취약계층을 돕는 도구가 되겠습니다.</p>
+      <p class="lead en">Together with the Daejeon Office of Education, we donated ZeroZero Check to students with type 1 diabetes and to the Korean Society of Type 1 Diabetes.</p>
+    </div>
+    <img src="assets/donation.jpg" alt="한국1형당뇨병환우회 기부 행사 단체 사진" width="722" height="380" loading="lazy" />
+  </div>
+</section>
+
+<!-- PARTNER -->
+<section class="partner" id="partner">
+  <div class="wrap">
+    <span class="eyebrow" style="color:#fff;opacity:.9">PARTNERSHIP</span>
+    <h2 class="ko">제로제로체크와 함께할<br />파트너를 찾습니다</h2>
+    <h2 class="en">Let's grow together</h2>
+    <p class="lead ko">입점, 대량 구매, 해외 유통 모두 환영합니다. 메일 주시면 빠르게 답변드릴게요.</p>
+    <p class="lead en">Retail, bulk orders, and international distribution are all welcome. Email us and we'll get back to you quickly.</p>
+    <div class="partner-types">
+      <div><b class="ko">카페·프랜차이즈</b><b class="en">Cafés &amp; franchises</b><span class="ko">매장 비치·굿즈</span><span class="en">In-store &amp; merch</span></div>
+      <div><b class="ko">약국·드럭스토어</b><b class="en">Pharmacies &amp; drugstores</b><span class="ko">건강 코너 입점</span><span class="en">Health aisle</span></div>
+      <div><b class="ko">기업·기관 단체 구매</b><b class="en">Corporate &amp; groups</b><span class="ko">임직원 복지·선물</span><span class="en">Wellness &amp; gifts</span></div>
+      <div><b class="ko">해외 유통</b><b class="en">International distribution</b><span class="ko">아마존·일본·아시아</span><span class="en">Amazon, Japan, Asia</span></div>
+    </div>
+    <div class="ctas">
+      <a class="btn btn-white" href="mailto:curahealbio@gmail.com?subject=%5B%EC%A0%9C%ED%9C%B4%EB%AC%B8%EC%9D%98%5D%20%EC%A0%9C%EB%A1%9C%EC%A0%9C%EB%A1%9C%EC%B2%B4%ED%81%AC"><span class="ko">제휴 문의 메일 보내기</span><span class="en">Email us about partnership</span></a>
+      <a class="btn btn-ghost-white ko" href="https://smartstore.naver.com/curahealbio" target="_blank" rel="noopener">스마트스토어 바로가기</a>
+      <a class="btn btn-ghost-white" href="https://curahealbio.com/#zerozero" target="_blank" rel="noopener"><span class="ko">공식 홈페이지</span><span class="en">Official website</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
 <footer>
-  <div class="footer-logo">Cura<span>Heal</span>Bio</div>
-  <div class="footer-links">
-    <a href="https://smartstore.naver.com/curahealbio">스마트스토어</a>
-    <a href="https://curahealbio.com">curahealbio.com</a>
-    <a href="mailto:curahealbio@gmail.com">curahealbio@gmail.com</a>
-    <a href="https://github.com/curahealbio">GitHub</a>
+  <div class="wrap">
+    <div class="top">
+      <div class="co">
+        <img src="assets/logo-white.png" alt="" width="256" height="258" />
+        <div><b class="ko">(주)큐라힐바이오</b><b class="en">CURAHEAL BIO Co., Ltd.</b><span class="ko">대표 남한민 · curahealbio@gmail.com</span><span class="en">CEO Hanmin Nam · curahealbio@gmail.com</span></div>
+      </div>
+      <nav aria-label="바로가기">
+        <a href="https://curahealbio.com/#zerozero" target="_blank" rel="noopener"><span class="ko">공식 홈페이지</span><span class="en">Official site</span></a>
+        <a href="https://smartstore.naver.com/curahealbio" target="_blank" rel="noopener"><span class="ko">네이버 스마트스토어</span><span class="en">Naver Smartstore</span></a>
+        <a href="https://www.youtube.com/@curahealbio" target="_blank" rel="noopener">YouTube</a>
+        <a href="mailto:curahealbio@gmail.com"><span class="ko">이메일 문의</span><span class="en">Email</span></a>
+      </nav>
+    </div>
+    <p class="note">
+      <span class="ko">제로제로체크는 음료 속 당 함유 여부를 색 변화로 알려주는 검사지이며, 혈당을 측정하거나 질병을 진단하는 제품이 아닙니다.<br /></span>
+      <span class="en">ZeroZero Check indicates whether a beverage contains sugar through a color change. It does not measure blood glucose or diagnose any condition.<br /></span>
+      © 2026 CURAHEAL BIO. All rights reserved.
+    </p>
   </div>
-  <div class="footer-copy">© 2024 CuraHealBio. All rights reserved.</div>
 </footer>
 
+<a class="buy-bar ko" href="https://smartstore.naver.com/curahealbio" target="_blank" rel="noopener">스마트스토어에서 구매하기</a>
+<a class="buy-bar en" href="mailto:curahealbio@gmail.com?subject=ZeroZero%20Check%20order%20inquiry">Order inquiry</a>
+
 <script>
-  let lang = 'ko';
-  function toggleLang() {
-    lang = lang === 'ko' ? 'en' : 'ko';
-    document.body.classList.toggle('lang-en', lang === 'en');
-    const btns = document.querySelectorAll('.lang-toggle');
-    btns.forEach(b => b.textContent = lang === 'ko' ? '🌐 EN' : '🌐 한국어');
-    // stat labels
-    document.querySelectorAll('.stat-label.ko').forEach(el => el.style.display = lang === 'en' ? 'none' : 'block');
-    document.querySelectorAll('.stat-label.en').forEach(el => el.style.display = lang === 'en' ? 'block' : 'none');
-    document.querySelectorAll('.section-tag.ko').forEach(el => el.style.display = lang === 'en' ? 'none' : 'inline-block');
-    document.querySelectorAll('.section-tag.en').forEach(el => el.style.display = lang === 'en' ? 'inline-block' : 'none');
-  }
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('langBtn');
+    var titles = {
+      ko: '제로제로체크 | 음료 속 당, 마시기 전에 확인하세요 – 큐라힐바이오',
+      en: 'ZeroZero Check | Is your drink really sugar-free? – CURAHEAL BIO'
+    };
+    function apply(lang) {
+      root.lang = lang;
+      btn.textContent = lang === 'ko' ? 'EN' : '한국어';
+      document.title = titles[lang];
+    }
+    var saved = null;
+    try { saved = localStorage.getItem('zzc-lang'); } catch (e) {}
+    var browser = (navigator.language || 'ko').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en';
+    apply(saved === 'ko' || saved === 'en' ? saved : browser);
+    btn.addEventListener('click', function () {
+      var next = root.lang === 'ko' ? 'en' : 'ko';
+      apply(next);
+      try { localStorage.setItem('zzc-lang', next); } catch (e) {}
+    });
+
+    var hero = document.querySelector('.hero');
+    document.body.classList.add('at-hero');
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        document.body.classList.toggle('at-hero', entries[0].isIntersecting);
+      }, { threshold: 0.15 }).observe(hero);
+    } else {
+      document.body.classList.remove('at-hero');
+    }
+  })();
 </script>
 </body>
 </html>
