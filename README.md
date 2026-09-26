@@ -7,6 +7,7 @@
 *Redefining health management with portable, accurate, and accessible medical devices.*
 
 [![Website](https://img.shields.io/badge/Website-curahealbio.com-00C896?style=for-the-badge&logo=google-chrome&logoColor=white)](https://curahealbio.com)
+[![Shop](https://img.shields.io/badge/Shop-Naver%20Smartstore-03C75A?style=for-the-badge&logo=naver&logoColor=white)](https://smartstore.naver.com/curahealbio)
 [![Email](https://img.shields.io/badge/Contact-curahealbio%40gmail.com-0057FF?style=for-the-badge&logo=gmail&logoColor=white)](mailto:curahealbio@gmail.com)
 [![B2B](https://img.shields.io/badge/B2B-Partnership%20Welcome-FF6B35?style=for-the-badge)](mailto:curahealbio@gmail.com?subject=B2B%20Partnership%20Inquiry)
 
