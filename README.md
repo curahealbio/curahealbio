@@ -5,7 +5,7 @@
 # 제로제로체크 ZeroZero Check
 
 **이 음료, 정말 제로슈가 맞을까? 마시기 전에 5~10초면 확인해요.**
-*Is your drink really sugar-free? Find out in seconds, before you sip.*
+*Diet or regular? Find out in seconds, before you sip.*
 
 [![Website](https://img.shields.io/badge/Website-curahealbio.com-F96A28?style=for-the-badge)](https://curahealbio.com/#zerozero)
 [![Shop](https://img.shields.io/badge/Shop-Naver%20Smartstore-03C75A?style=for-the-badge&logo=naver&logoColor=white)](https://smartstore.naver.com/curahealbio)
@@ -18,13 +18,14 @@
 
 ## 제품 소개
 
-**제로제로체크**는 (주)큐라힐바이오가 만든 **휴대용 당 검사지(스트립 타입)** 입니다.
-검사지를 음료에 적시면 5~10초 안에 색 변화로 당이 들어 있는지 알려줍니다.
+**제로제로체크**는 (주)큐라힐바이오가 만든 **휴대용 포도당 검사지(스트립 타입)** 입니다.
+검사지를 음료에 적시면 5~10초 안에 색 변화로 포도당이 들어 있는지 알려줍니다. 제로콜라는 그대로, 일반 콜라는 색이 변해요.
 
 | | |
 |---|---|
-| 🟦 **색 변화 없음** | 당이 없는 제로 음료 |
-| 🟫 **황갈색으로 변함** | 당이 들어 있는 음료 |
+| 🟦 **색 변화 없음** | 포도당 없음 (제로콜라 등) |
+| 🟫 **황갈색으로 변함** | 포도당 함유 (일반 콜라, 주스, 꿀 등) |
+| ℹ️ **반응하지 않는 당** | 설탕(자당), 과당 |
 | 📦 **구성** | 1통 100회분 |
 | 👜 **휴대성** | 가방·주머니에 들어가는 소형 디자인 |
 
@@ -52,7 +53,7 @@
 
 ---
 
-<sub>제로제로체크는 음료 속 당 함유 여부를 색 변화로 알려주는 검사지이며, 혈당을 측정하거나 질병을 진단하는 제품이 아닙니다.</sub>
+<sub>제로제로체크는 음료 속 포도당 함유 여부를 색 변화로 알려주는 검사지로, 설탕(자당)이나 과당에는 반응하지 않습니다. 혈당을 측정하거나 질병을 진단하는 제품이 아닙니다.</sub>
 
 <div align="center">
 
